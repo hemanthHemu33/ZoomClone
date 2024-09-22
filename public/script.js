@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then((stream) => {
       myStream = stream; // Assign stream to global variable
+      myVideo.style.transform = "scaleX(-1)";
       addVideoStream(myVideo, stream);
 
       // Handle incoming calls (when other users call you)
@@ -57,8 +58,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Function to add video stream to the grid
+  //   function addVideoStream(video, stream) {
+  //     video.srcObject = stream;
+  //     video.addEventListener("loadedmetadata", () => {
+  //       video.play();
+  //     });
+  //     videoGrid.append(video);
+  //   }
+
   function addVideoStream(video, stream) {
     video.srcObject = stream;
+
+    // Un-mirror the video if needed
+    video.style.transform = "scaleX(-1)";
+
     video.addEventListener("loadedmetadata", () => {
       video.play();
     });
