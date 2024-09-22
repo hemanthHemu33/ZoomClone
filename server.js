@@ -4,6 +4,9 @@ const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const { v4: uuidV4 } = require("uuid");
 
+// Render will provide a port through an environment variable
+const PORT = process.env.PORT || 3000;
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
@@ -26,6 +29,7 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log("Server is running on port 3000");
+// Use the environment variable for the port
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

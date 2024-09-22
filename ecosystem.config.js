@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "server",
-      script: "nodemon server.js",
+      script: "server.js",
       // Add any other options you need for server.js
     },
     {
