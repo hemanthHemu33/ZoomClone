@@ -1,15 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io("/");
   const videoGrid = document.getElementById("video-grid");
-
+  // https://zoomclone-7qup.onrender.com/peerjs/id?ts=17270790223010.14315808248811535&version=1.5.4;
+  // http://localhost:3001/peerjs/id?ts=17270790815380.11237262466274345&version=1.5.4
   // Dynamically set the host
-  const host = window.location.hostname; // Gets the current hostname
-  const port = window.location.protocol === "https:" ? "443" : "3001"; // Set port based on protocol
+  // Dynamically set the host
+  const host = window.location.hostname;
+  const port = window.location.protocol === "https:" ? "443" : "3001";
 
   const myPeer = new Peer(undefined, {
     host: host,
     port: port,
-    // Ensure this matches your server path if defined
+    path: "/peerjs", // Ensure this matches the PeerJS server's path
   });
 
   const peers = {};
