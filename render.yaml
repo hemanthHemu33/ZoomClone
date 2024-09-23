@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: zoom-clone-server
+    env: node
+    buildCommand: |
+      npm install
+      npm install pm2@latest -g
+      npm install -g peerjs
+    startCommand: "pm2 start ecosystem.config.js --env production" # Starts both services
+    plan: free
+    region: oregon
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+
+  - type: web
+    name: peerjs-server
+    env: node
+    buildCommand: |
+      npm install -g peerjs
+    startCommand: "pm2 start ecosystem.config.js --only peer --env production"
+    plan: free
+    region: oregon
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PEER_PORT
+        value: 3001
