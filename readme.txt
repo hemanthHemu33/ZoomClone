@@ -62,7 +62,7 @@ To install PeerJS, run the following command: peerjs --port 3001
 This project is licensed under the MIT License.
 
 
+npm i peer -g
 
-npm install pm2@latest -g
 
 pm2 start ecosystem.config.js --env production
