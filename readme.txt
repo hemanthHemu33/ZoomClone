@@ -66,3 +66,4 @@ npm i peer -g
 
 
 pm2 start ecosystem.config.js --env production
+   "start": "concurrently \"node server.js\" \"peerjs --port 3001\"",
