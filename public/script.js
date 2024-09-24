@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const myPeer = new Peer(undefined, {
     host: location.hostname,
-    port: location.protocol === "https:" ? 443 : 3001, // Use port 443 for HTTPS, fallback to 3001 locally
-    secure: location.protocol === "https:", // Secure connection when on HTTPS
+    port: location.protocol === "https:" ? 443 : 3001, // Use 3001 locally, and 443 for HTTPS in production
+    // path: "/peerjs", // This path should match the path set on the server
+    secure: location.protocol === "https:", // Ensure secure connection when using HTTPS
   });
 
   const peers = {};
